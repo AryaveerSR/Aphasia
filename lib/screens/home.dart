@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../ui/tile_button.dart';
+import '../data/index.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -12,7 +15,19 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-      child: Container(),
-    ));
+            child: GridView.count(
+                crossAxisCount: calculateAxisCount(context),
+                children: List.generate(
+                    options.length,
+                    (index) => TileButton(
+                        text: options[index].name,
+                        icon: options[index].icon,
+                        onPressed: () =>
+                            options[index].onClick?.call(context))))));
   }
+}
+
+int calculateAxisCount(BuildContext context) {
+  // DO Better
+  return MediaQuery.of(context).size.width ~/ 120;
 }
