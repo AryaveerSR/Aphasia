@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../ui/tile_button.dart';
-import 'home.dart';
+import '../helpers.dart';
+import '../data.dart';
 
 class Select extends StatelessWidget {
   const Select({Key? key, required this.options, required this.onPressed})
       : super(key: key);
-  final List<String> options;
+  final List<ListOption> options;
   final VoidCallback onPressed;
 
   @override
@@ -18,6 +19,8 @@ class Select extends StatelessWidget {
                 children: List.generate(
                     options.length,
                     (index) => TileButton(
-                        text: options[index], onPressed: onPressed)))));
+                        text: options[index].name,
+                        icon: options[index].icon,
+                        onPressed: onPressed)))));
   }
 }

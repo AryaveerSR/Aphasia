@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../helpers.dart';
 import '../ui/tile_button.dart';
-import 'home.dart';
 
 class PainScreen extends StatelessWidget {
   const PainScreen({Key? key}) : super(key: key);
@@ -14,20 +14,10 @@ class PainScreen extends StatelessWidget {
                 crossAxisCount: calculateAxisCount(context),
                 children: List.generate(
                     10,
-                    (index) => Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey)),
-                          child: Material(
-                            color: Colors.red[index * 100],
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.popUntil(
-                                    context, (route) => route.isFirst);
-                              },
-                              child:
-                                  Center(child: Text((index + 1).toString())),
-                            ),
-                          ),
-                        )))));
+                    (index) => TileButton(
+                        text: (index + 1).toString(),
+                        redIntensity: index,
+                        onPressed: () => Navigator.popUntil(
+                            context, (route) => route.isFirst))))));
   }
 }

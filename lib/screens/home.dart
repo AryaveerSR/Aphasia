@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../ui/tile_button.dart';
-import '../data/index.dart';
+import '../data.dart';
+import '../helpers.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -25,9 +26,4 @@ class _HomePageState extends State<HomePage> {
                         onPressed: () =>
                             options[index].onClick?.call(context))))));
   }
-}
-
-int calculateAxisCount(BuildContext context) {
-  // DO Better
-  return MediaQuery.of(context).size.width ~/ 120;
 }

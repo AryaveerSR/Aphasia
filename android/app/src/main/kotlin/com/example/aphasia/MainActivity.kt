@@ -1,4 +1,4 @@
-package com.example.aphasia
+package com.aryaveersr.aphasia
 
 import io.flutter.embedding.android.FlutterActivity
 
